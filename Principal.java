@@ -26,7 +26,6 @@ public class Principal{
 		else {
 			System.out.println("Movimento impossibilitado...");
 		}
-		
 	}
 	
 	public static void main(String[] args) {
