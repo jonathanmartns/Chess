@@ -1,25 +1,15 @@
 
 public abstract class Piece implements Acoes {
-	protected String nome; 
-	protected Cores cor;
+	private String nome;
+	private Cores cor;
 	private int posicaoX;
 	private int posicaoY;
-	private String diretorioAtual;
-	public static final String diretorioImagemBranca = "/sprites/branca.png";
-	public static final String diretorioImagemPreta = "/sprites/preta.png";
-	private int imagemLargura;
-	private int imagemAltura;
-	private int imagemX;
-	private int imagemY;
 	
-	public String getNome() {
-		return nome;
-	}
+	private double imagemLargura;
+	private double imagemAltura;
+	private double imagemX;
+	private double imagemY;
 	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public int getPosicaoX() {
 		return posicaoX;
 	}
@@ -36,43 +26,65 @@ public abstract class Piece implements Acoes {
 		this.posicaoY = posicaoY;
 	}
 	
-	public String getDiretorioAtual() {
-		return diretorioAtual;
+	public boolean deslocamento(int destinoY, int destinoX) {
+		// verifica se realmente houve deslocamento
+		int posicaoAtualY = getPosicaoY();
+		int posicaoAtualX = getPosicaoX();
+		
+		if(posicaoAtualX - destinoX != 0 && posicaoAtualY - destinoY != 0)
+			return true;
+		else
+			return false;
 	}
 
-	public void setDiretorioAtual(String diretorioAtual) {
-		this.diretorioAtual = diretorioAtual;
+	public Cores getCor() {
+		return cor;
 	}
 
-	public int getImagemLargura() {
+	public void setCor(Cores cor) {
+		this.cor = cor;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public double getImagemLargura() {
 		return imagemLargura;
 	}
-	
-	public void setImagemLargura(int imagemLargura) {
+
+	public void setImagemLargura(double imagemLargura) {
 		this.imagemLargura = imagemLargura;
 	}
-	
-	public int getImagemAltura() {
+
+	public double getImagemAltura() {
 		return imagemAltura;
 	}
-	
-	public void setImagemAltura(int imagemAltura) {
+
+	public void setImagemAltura(double imagemAltura) {
 		this.imagemAltura = imagemAltura;
 	}
-	
-	public int getImagemX() {
+
+	public double getImagemX() {
 		return imagemX;
 	}
-	
-	public void setImagemX(int imagemX) {
+
+	public void setImagemX(double imagemX) {
 		this.imagemX = imagemX;
 	}
-	
-	public int getImagemY() {
+
+	public double getImagemY() {
 		return imagemY;
 	}
-	
-	public void setImagemY(int imagemY) {
+
+	public void setImagemY(double imagemY) {
 		this.imagemY = imagemY;
 	}
+	
+	
+
 }

@@ -2,33 +2,34 @@ import java.util.ArrayList;
 
 public class Historico<H>{
 	private ArrayList <Acoes> acoes;
-	private class Acoes<A>{
-		private A pecaAtacante;
-		private A pecaAlvo;
-		private int yAtacante;
-		private int xAtacante;
+	
+	private class Acoes<P>{
+		private P pecaAtacante;
+		private P pecaAlvo;
+		private int yOrigemAtacante;
+		private int xOrigemAtacante;
 
-		Acoes(A pecaAtacante, A pecaAlvo){
+		Acoes(P pecaAtacante, P pecaAlvo){
 			this.pecaAlvo = pecaAlvo;
 			this.pecaAtacante = pecaAtacante;
-			this.yAtacante = ((Piece)pecaAtacante).getPosicaoY();
-			this.xAtacante = ((Piece)pecaAtacante).getPosicaoX();
+			this.yOrigemAtacante = ((Piece)pecaAtacante).getPosicaoY();
+			this.xOrigemAtacante = ((Piece)pecaAtacante).getPosicaoX();
 		}
 
-		public A getPecaAtacante() {
+		public P getPecaAtacante() {
 			return pecaAtacante;
 		}
 
-		public A getPecaAlvo() {
+		public P getPecaAlvo() {
 			return pecaAlvo;
 		}
 
 		public int getyAtacante() {
-			return this.yAtacante;
+			return this.yOrigemAtacante;
 		}
 
 		public int getxAtacante() {
-			return this.xAtacante;
+			return this.xOrigemAtacante;
 		}	
 	}
 	
@@ -38,20 +39,20 @@ public class Historico<H>{
 	}
 	
 	public void novaAcao(H peca) {
-		acoes.add(new Acoes(peca, null));
+		acoes.add(new Acoes<H>(peca, null));
 	}
 	
 	public void novaAcao(H peca1, H peca2) {
-		acoes.add(new Acoes(peca1, peca2));
+		acoes.add(new Acoes<H>(peca1, peca2));
 	}
 	
 	public void voltarHistorico(int idJogada) {
 		int tamanhoHistorico = this.acoes.size() - 1;
 		
 		for(int i=tamanhoHistorico; i>=idJogada; i--) {
-			Object pecaAtacante = acoes.get(i).getPecaAtacante();
+			Object pecaAtacante = acoes.get(i).getPecaAlvo();
 			Object pecaAlvo = acoes.get(i).getPecaAlvo();
-
+			
 			String nomeAtacante = "";
 			String nomeAlvo = "";
 
